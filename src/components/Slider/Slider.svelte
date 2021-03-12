@@ -32,7 +32,7 @@
     let c2 = getColor(`--color-${color}-200`);
     style = disabled
     ? ""
-    : `background: linear-gradient(to right, ${c1} 0%, ${c1} ${value}%, ${c2} ${value}%, ${c2} 100%); --bg: ${c1}; --bg-focus: ${c1}`;
+    : `background: linear-gradient(to right, ${c1} 0%, ${c1} ${100*(value-min)/(max-min)}%, ${c2} ${100*(value-min)/(max-min)}%, ${c2} 100%); --bg: ${c1}; --bg-focus: ${c1}`;
   }
 
   function applyColor(node) {
