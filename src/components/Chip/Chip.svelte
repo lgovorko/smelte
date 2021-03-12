@@ -31,8 +31,12 @@
 
   function select() {
     if (!selectable) return;
-
     selected = true;
+  }
+
+  function deSelect() {
+    if (!selectable) return;
+    selected = false;
   }
 
   const { bg, txt, border } = utils(color);
@@ -44,7 +48,7 @@
     .add('relative overflow-hidden flex items-center rounded-full px-2 py-1')
     .add('bg-transparent border', outlined)
     .add('border-gray-400 border-solid hover:bg-gray-50 dark-hover:bg-dark-400 bg-gray-300 dark:bg-dark-600', !selected)
-    .add(`${border()} dark:${border('800')} ${txt()} ${bg(100)} hover:${bg(50)}`, selected)
+    .add(`${border()} dark:${border(800)} ${txt()} ${bg(100)} hover:${bg(50)}`, selected)
     .remove(remove)
     .replace(replace)
     .add(add)
@@ -84,7 +88,7 @@
       on:click
       use:ripple
       {...props}
-      on:click={select}>
+      on:click={select} on:blur={deSelect}>
       {#if icon}
         <Icon small class={selected ? txt(400) : 'text-gray-600'}>
           {icon}
