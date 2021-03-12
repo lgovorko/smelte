@@ -90,7 +90,7 @@
           {icon}
         </Icon>
       {/if}
-      <span class={removable ? 'pl-2 pr-12 text-sm' : 'px-2 text-sm'}>
+      <span class={removable ? 'pl-2 pr-6 text-sm' : 'px-2 text-sm'}>
         <slot />
       </span>
     </button>
