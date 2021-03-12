@@ -71,10 +71,14 @@
   .p-1\/2 {
     padding: 0.125rem;
   }
+  .move-icon {
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
 </style>
 
 {#if value}
-  <span class="{c} mx-1 inline-block" out:scale={{ duration: 100 }}>
+  <span class="{c} mx-1 inline-block relative" out:scale={{ duration: 100 }}>
     <button
       class={classes}
       on:click
@@ -86,16 +90,16 @@
           {icon}
         </Icon>
       {/if}
-      <span class="px-2 text-sm">
+      <span class={removable ? 'pl-2 pr-12 text-sm' : 'px-2 text-sm'}>
         <slot />
       </span>
-      {#if removable}
-        <span
-          class="rounded-full p-1/2 inline-flex items-center cursor-pointer {iconClass}"
-          on:click|stopPropagation={close}>
-          <Icon class="text-white dark:text-white" xs>clear</Icon>
-        </span>
-      {/if}
     </button>
+    {#if removable}
+      <span
+        class="absolute right-0 move-icon rounded-full p-1/2 inline-flex items-center cursor-pointer {iconClass}"
+        on:click|stopPropagation={close}>
+        <Icon class="text-white dark:text-white" xs>clear</Icon>
+      </span>
+    {/if}
   </span>
 {/if}

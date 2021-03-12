@@ -24,7 +24,7 @@
     .add($$props.class)
     .get();
 
-  const getColor = c => getComputedStyle(document.documentElement).getPropertyValue(c);
+  const getColor = c => typeof getComputedStyle === 'function' ? getComputedStyle(document.documentElement).getPropertyValue(c) : 'white';
 
   let style;
   $: {
